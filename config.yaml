@@ -1,7 +1,4 @@
-# This is the configuration file for your Developermail account.
-# You can manage ultiple mailboxes and even multiple domains using this file.
-# See below, for examples. Make also sure you check out the official
-# documentation on https://developermail.io/docs
+# https://developermail.io/docs
 
 # Configuration section developermail.io addresses
 developermail.io:
@@ -66,4 +63,6 @@ developermail.io:
 #     # Add aliases for common administrative addresses.
 #     # Note: You can set unlimited aliases on custom domains.
 #     aliases: [root, admin, mailer-daemon, webmaster, postmaster, abuse]
-
+spencerboucher.com:
+  hostmaster:
+    aliases: [spencer]
