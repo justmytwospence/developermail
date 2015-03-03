@@ -1,68 +1,9 @@
 # https://developermail.io/docs
 
-# Configuration section developermail.io addresses
 developermail.io:
-
-  # This is your primary mailbox. It is the admin login for all mailboxes and
-  # domains you create and manage using this file. You can't delete it, as it
-  # would log you out of all configuration options!
   spencer:
-
-    # Specify a sieve file in your repository you want to use with this
-    # mailbox. We're shipping "sieve/default.sieve" with the initial
-    # configuration, which contains a basic filter rule, moving all spam
-    # messages to the "Spam" folder.
+    aliases: [boucher, justmytwospence, s, spence, spencer.boucher, spencer.g.boucher]
     sieve: sieve/default.sieve
-
-    # Specify additional aliases here. Aliases are free of charge!
-    # All email to an alias address will end up in your inbox.
-    # Specifying an alias will also allow you to send email from the alias
-    # address.
-    # You can add multiple aliases for every mailbox!
-    # aliases:
-    #   # Setup the alias "spencer-test@developermail.io"
-    #   - spencer-test
-    #
-    #   # New aliases are just one line away!
-    #   - spencer-private
-    #   - spencer-business
-
-    # In the following configuration section, you can set up your forwards.
-    # If you specify one or more forwards, all incoming email will not be
-    # delivered to your mailbox, but instead be forwarded to all addresses
-    # you specify here.
-    # This feature can be used to setup simple mailing lists.
-    # Uncomment the following entry to forward all incoming mail for the
-    # address spencer@developermail.io (incl. all aliases you specified above)
-    # to the the addresses you specify below. Note that you can use addresses
-    # from other email providers!
-    #
-    # forwards:
-    #   - spencers-gmail-address@gmail.com
-    #   - spencer@yourcompany.com
-
-  # You can register more mailboxes, too!
-  # Uncomment the following lines to activate othermailbox@developermail.io
-  # A password for this mailbox will be generated automatically, and displayed
-  # upon "git push".
-  #
-  # othermailbox:
-  #   sieve: sieve/default.sieve
-
-
-# You can also register other domains using this config file!
-# Simply add the new domain to the config file and push the changes.
-# Note that you need to have access to the domains DNS settings, in order to
-# use it with Developermail! The required DNS settings will be displayed upon
-# "git push".
-# Visit https://developermail.io/dns-check#/example.com to check whether your
-# DNS settings are correct!
-# example.com:
-#   # Register hostmaster@example.com
-#   hostmaster:
-#     # Add aliases for common administrative addresses.
-#     # Note: You can set unlimited aliases on custom domains.
-#     aliases: [root, admin, mailer-daemon, webmaster, postmaster, abuse]
 spencerboucher.com:
-  hostmaster:
-    aliases: [spencer]
+  spencer:
+    aliases: [contact, me]

@@ -1,6 +1,8 @@
+# http://sieve.info/
+
 require "fileinto";
-require "regex";
 require "imap4flags";
+require "regex";
 
 # Place all spam mails in "Spam" folder
 if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
