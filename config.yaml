@@ -7,3 +7,4 @@ developermail.io:
 spencerboucher.com:
   spencer:
     aliases: [boucher, contact, justmytwospence, me, spence, spencer.boucher, spencer.g.boucher]
+    sieve: sieve/default.sieve
