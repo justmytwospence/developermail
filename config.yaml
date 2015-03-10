@@ -3,9 +3,10 @@
 developermail.io:
   spencer:
     aliases: [spencer.boucher, spencer.g.boucher]
+    forwards: spencer@spencerboucher.com
     sieve: sieve/default.sieve
 
 spencerboucher.com:
   spencer:
-    aliases: [boucher, contact, justmytwospence, me, spence, spencer.boucher, spencer.g.boucher]
+    aliases: [boucher, contact, email, justmytwospence, mail, me, s, spence, spencer.boucher, spencer.g.boucher]
     sieve: sieve/default.sieve
