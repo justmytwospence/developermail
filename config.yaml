@@ -2,5 +2,5 @@
 
 spencerboucher.com:
   spencer:
-    aliases: [boucher, contact, email, justmytwospence, mail, me, s, spence, spencer.boucher, spencer.g.boucher]
+    aliases: ["@"]
     sieve: sieve/default.sieve
