@@ -1,6 +1,6 @@
 # http://sieve.info/
 
-require ["envelope", "fileinto", "regex", "variables"]
+require ["envelope", "fileinto", "regex", "variables"];
 
 # Spam
 if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
