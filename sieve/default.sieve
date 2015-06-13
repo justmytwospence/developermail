@@ -15,8 +15,8 @@ if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
 if exists "list-id" {
   if header :regex "list-id" "<([a-z0-9-]+)[.@]" {
     set :lower "listname" "${1}";
-      fileinto "list.${listname}";
-    } else {
+    fileinto "list.${listname}";
+  } else {
     if header :regex "list-id" "^\\s*<?([a-z0-9-]+)[.@]" {
       set :lower "listname" "${1}";
       fileinto "list.${listname}";
@@ -61,7 +61,7 @@ elsif exists "x-loop" {
 elsif envelope :contains "from" "owner-" {
   if envelope :regex "from" "owner-([a-z0-9-]+)-outgoing@" {
     set :lower "listname" "${1}";
-     fileinto "list.${listname}";
+    fileinto "list.${listname}";
   } elsif envelope :regex "from" "owner-([a-z0-9-]+)@" {
     set :lower "listname" "${1}";
     fileinto "list.${listname}";
