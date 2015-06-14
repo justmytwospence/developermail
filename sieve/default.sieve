@@ -2,13 +2,6 @@
 
 require ["envelope", "fileinto", "regex", "variables"];
 
-# Spam
-if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
-          not header :contains "X-DSPAM-Reclassified" "Innocent") {
-  fileinto "Spam";
-  stop;
-}
-
 # Mailing lists
 if header "Precedence" "list" {
   if exists "list-id" {
@@ -21,5 +14,12 @@ if header "Precedence" "list" {
   } stop;
 } else {
   fileinto "Lists";
+  stop;
+}
+
+# Spam
+if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
+          not header :contains "X-DSPAM-Reclassified" "Innocent") {
+  fileinto "Spam";
   stop;
 }
