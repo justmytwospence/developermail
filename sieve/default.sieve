@@ -3,7 +3,7 @@
 require ["envelope", "fileinto", "regex", "variables"];
 
 # Mailing lists
-if header "Precedence" "list" {
+if header :contains "Precedence" ["bulk", "list"] {
   if exists "list-id" {
     if header :regex "list-id" ".*<([a-zA-Z0-9-]+)[.@].*" {
       set :lower "listname" "${1}";
