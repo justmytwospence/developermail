@@ -8,6 +8,10 @@ if header :contains "Precedence" "list" {
   stop;
 }
 
+if address :is "from" "spencer@spencerboucher.com" {
+  fileinto "Self";
+}
+
 if header :contains "subject" "test" {
   fileinto "Tests";
   stop;
