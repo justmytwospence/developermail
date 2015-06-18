@@ -1,10 +1,15 @@
 # http://sieve.info/
 
-require ["envelope", "fileinto", "regex", "variables"];
+require ["fileinto", "regex"];
 
 # Mailing lists
 if header :contains "Precedence" "list" {
   fileinto "Lists";
+  stop;
+}
+
+if header :contains "subject" "test" {
+  fileinto "Tests";
   stop;
 }
 
