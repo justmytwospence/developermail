@@ -1,10 +1,14 @@
 # http://sieve.info/
 
-require ["fileinto", "regex", "variables"];
+require ["fileinto", "mailbox", "regex", "variables"];
 
 # Mailing lists
 if header :contains "Precedence" "list" {
-  fileinto "Lists";
+  if header :regex "List-Id" "<(.*)@" {
+    fileinto :create "${1}";
+  } else {
+    fileinto :create "Lists";
+  }
 }
 
 # Spam
