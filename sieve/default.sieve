@@ -1,25 +1,18 @@
 # http://sieve.info/
 
-require ["fileinto", "regex"];
+require ["fileinto", "regex", "variables"];
 
 # Mailing lists
 if header :contains "Precedence" "list" {
-  fileinto "Lists";
-  stop;
-}
-
-if address :is "from" "spencer@spencerboucher.com" {
-  fileinto "Self";
-}
-
-if header :contains "subject" "test" {
-  fileinto "Tests";
-  stop;
+  if header :regex "List-Id" "<(.*)@" {
+    fileinto "lists.${1}";
+  } else {
+    fileinto :create "Lists";
+  }
 }
 
 # Spam
 if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
           not header :contains "X-DSPAM-Reclassified" "Innocent") {
-  fileinto "Spam";
-  stop;
+  fileinto :create "Spam";
 }
