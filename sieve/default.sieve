@@ -10,12 +10,9 @@ if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
 }
 
 # Mailing lists
-if header :contains "Precedence" "list" {
-  if not header :contains "From" ["<notifications@github.com>"] {
-    if header :regex "List-Id" "<(.+?)[.@]" {
-      fileinto :create "${1}";
-    } else {
-      fileinto :create "Lists";
-    }
-  }
+if allof (header :contains "Precedence" "list",
+          not header :contains "From" ["<notifications@github.com>"],
+          header :regex "List-Id" "<(.+?)[.@]") {
+  set :lower "listname" "${1}";
+  fileinto :create "${listname}";
 }
