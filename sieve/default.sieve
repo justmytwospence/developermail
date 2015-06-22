@@ -16,3 +16,8 @@ if allof (header :contains "Precedence" "list",
   set :lower "listname" "${1}";
   fileinto :create "${listname}";
 }
+
+# Spark mailing list
+if header :contains "From" "[via Apache Spark User List]" {
+  fileinto :create "apache-spark-user-list"
+}
