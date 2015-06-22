@@ -12,12 +12,12 @@ if allof (header :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
 # Mailing lists
 if allof (header :contains "Precedence" "list",
           not header :contains "From" ["<notifications@github.com>"],
-          header :regex "List-Id" "<(.+)>") {
+          header :matches "List-Id" "<(.+)[.@]") {
   set :lower "listname" "${1}";
-  fileinto :create "Lists/${listname}";
+  fileinto :create "Lists.${listname}";
 }
 
 # Spark mailing list
 if header :contains "From" "[via Apache Spark User List]" {
-  fileinto :create "Lists/spark-user-list.apache.org"
+  fileinto :create "Lists.apache-spark-user-list"
 }
