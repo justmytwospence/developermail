@@ -14,10 +14,10 @@ if allof (header :contains "Precedence" "list",
           not header :contains "From" ["<notifications@github.com>"],
           header :regex "List-Id" "<(.+)>") {
   set :lower "listname" "${1}";
-  fileinto :create "${listname}";
+  fileinto :create "Lists/${listname}";
 }
 
 # Spark mailing list
 if header :contains "From" "[via Apache Spark User List]" {
-  fileinto :create "apache-spark-user-list"
+  fileinto :create "Lists/spark-user-list.apache.org"
 }
