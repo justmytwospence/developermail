@@ -16,7 +16,7 @@ if allof (header     :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
 ## Mailing lists ##
 ###################
 
-if allof (header     :contains "Precedence" "list",
+if allof (header     :contains "Precedence" ["bulk", "list"],
           header     :matches  "List-Id"    "*<*.*",
           not header :contains "From" ["<notifications@github.com>"],
           not header :contains "From" ["alumni@"]) {
