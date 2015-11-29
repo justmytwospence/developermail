@@ -6,8 +6,8 @@ require ["fileinto", "mailbox", "regex", "variables"];
 ## Spam ##
 ##########
 
-if allof (header     :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
-          not header :contains "X-DSPAM-Reclassified" "Innocent") {
+if allof (header     :regex "x-dspam-result" "^(spam|virus|bl[ao]cklisted)$",
+          not header :contains "x-dspam-reclassified" "innocent") {
   fileinto :create "Spam";
   stop;
 }
@@ -16,10 +16,10 @@ if allof (header     :regex "X-DSPAM-Result" "^(Spam|Virus|Bl[ao]cklisted)$",
 ## Mailing lists ##
 ###################
 
-if allof (header     :contains "Precedence" ["bulk", "list"],
-          header     :matches  "List-Id"    "*<*.*",
-          not header :contains "From" ["<notifications@github.com>"],
-          not header :contains "From" ["alumni@"]) {
+if allof(header :is      "precedence" ["bulk", "list"]),
+         header :matches "list-id"    "*<*.*",
+         not address :is :domain    "from" "github.com",
+         not address :is :localpart "from" "alumni") {
   set :lower "listname" "${2}";
   fileinto :create "Lists.${listname}";
 }
@@ -28,6 +28,6 @@ if allof (header     :contains "Precedence" ["bulk", "list"],
 ## Oddball mailing lists ##
 ###########################
 
-if header :contains "From" "[via Apache Spark User List]" {
+if header :contains "from" "[via Apache Spark User List]" {
   fileinto :create "Lists.apache-spark-user";
 }
