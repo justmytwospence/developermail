@@ -1,8 +1,7 @@
 # https://developermail.io/docs
 
 spencerboucher.com:
-  admin:
-    password_length: 30
   spencer:
     aliases: ["@"]
+    password_length: 30
     sieve: sieve/default.sieve
