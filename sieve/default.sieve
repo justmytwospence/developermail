@@ -19,7 +19,7 @@ if allof (header     :regex "x-dspam-result" "^(spam|virus|bl[ao]cklisted)$",
 if allof(header :is      "precedence" ["bulk", "list"]),
          header :matches "list-id"    "*<*.*",
          not address :is :domain    "from" "github.com",
-         not address :is :localpart "from" "alumni") {
+         not address :is :localpart "to"   "alumni") {
   set :lower "listname" "${2}";
   fileinto :create "Lists.${listname}";
 }
