@@ -10,7 +10,7 @@ if allof (header :regex "x-dspam-result" "^(spam|virus|bl[ao]cklisted)$",
 }
 
 # Mailing lists
-if allof(header :is "precedence" ["bulk", "list"]),
+if allof(header :is "precedence" ["bulk", "list"],
          header :matches "list-id" "*<*.*",
          not address :is :domain "from" "github.com",
          not address :is :localpart "to" "alumni") {
